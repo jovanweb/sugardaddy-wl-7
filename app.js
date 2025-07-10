@@ -3,7 +3,7 @@ const { createApp } = Vue
 createApp({
     data() {
         return {
-            currentStep: 6,
+            currentStep: 1,
 			timeLeft: 300,
 			intervalId: null,
 			dropdown: false,
