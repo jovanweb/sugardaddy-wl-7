@@ -1,0 +1,390 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+		<title>JM date 13</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="style.css">
+		<meta name="description" content="">
+		<meta name="author" content="">
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+	</head>
+
+	<body>
+
+
+		<main id="app">
+			<!-- <transition name="fade" mode="out-in">
+				<div class="modal" v-if="modal">
+					<div class="modal-overlay"></div>
+					<div class="modal-content">
+						<a href="javascript:;" @click="modal = false" class="close">
+							<svg fill="none" width="20" viewBox="0 0 20 20">
+								<path fill="#000" fill-rule="evenodd" d="M4.3 4.3a1 1 0 0 1 1.4 0L10 8.58l4.3-4.3a1 1 0 1 1 1.4 1.42L11.42 10l4.3 4.3a1 1 0 0 1-1.42 1.4L10 11.42l-4.3 4.3a1 1 0 0 1-1.4-1.42L8.58 10l-4.3-4.3a1 1 0 0 1 0-1.4Z" clip-rule="evenodd"/>
+							</svg>
+						</a>
+						<input type="email" class="input input--modal" placeholder="Email">
+						<input type="password" class="input input--modal" placeholder="******">
+						<br>
+						<br>
+						<p class="u-text-center"><a href="#">
+							Forget your password?</a></p>
+						<p class="u-text-center">By logging in, I accept the and <a href="#">Privacy policy</a>.</p>
+						<button class="btn-circle btn--modal">Login</button>
+					</div>
+				</div>
+			</transition> -->
+			<div class="wrap-section">
+				<header class="header-main">
+					<img src="images/sugardaddy.svg" alt="" width="120">
+					<div class="dropdown-wrapper">
+						<a href="javascript:;" class="login" @click="dropdown=!dropdown">
+							Already a member?
+							<svg  width="15" viewBox="0 0 384 512">
+								<path fill="currentColor" d="M192 384a31.87 31.87 0 0 1-22.62-9.38l-160-160a31.99 31.99 0 1 1 45.25-45.25L192 306.8l137.4-137.4a31.99 31.99 0 1 1 45.25 45.25l-160 160A31.9 31.9 0 0 1 192 384z"/>
+							</svg>
+						</a>
+						<transition name="fade" mode="out-in">
+							<div class="dropdown" v-if="dropdown">
+								<a href="javascript:;" @click="dropdown = false" class="close">
+									<svg fill="none" width="20" viewBox="0 0 20 20">
+										<path fill="#000" fill-rule="evenodd" d="M4.3 4.3a1 1 0 0 1 1.4 0L10 8.58l4.3-4.3a1 1 0 1 1 1.4 1.42L11.42 10l4.3 4.3a1 1 0 0 1-1.42 1.4L10 11.42l-4.3 4.3a1 1 0 0 1-1.4-1.42L8.58 10l-4.3-4.3a1 1 0 0 1 0-1.4Z" clip-rule="evenodd"/>
+									</svg>
+								</a>
+								<input type="email" class="input input--modal" placeholder="Email">
+								<input type="password" class="input input--modal" placeholder="******">
+								<br>
+								<br>
+								<p class="u-text-center"><a href="#">
+									Forget your password?</a></p>
+								<p class="u-text-center">By logging in, I accept the and <a href="#">Privacy policy</a>.</p>
+								<button class="btn-circle btn--modal">Login</button>
+							</div>
+						</transition>
+					</div>
+				</header>
+				<section class="hero">
+					<transition name="fade" mode="out-in">
+						<article v-if="currentStep === 1" class="step step-1" style="background-image: url(images/img4.jpeg);">
+
+							<div class="step-header">
+								<h1>A booty call for tonight?</h1>
+							</div>
+
+							<div class="step-body">
+								<div class="body-heading">
+									Women are looking for casual sex partners.
+								</div>
+
+								<p>Free registration for men for: </p>
+
+								<div class="counter">
+									<div class="counter-number">
+										<span>{{ minutes }}</span>
+										Minutes
+									</div>
+									<span class="divider">:</span>
+									<div class="counter-number">
+										<span>{{ seconds }}</span>
+										Seconds
+									</div>
+								</div>
+							</div>
+							<div class="step-footer">
+								<h3>Are you over 18? </h3>
+								<transition name="fade" mode="out-in">
+									<p v-if="age">You must be of legal age to continue </p>
+								</transition>
+								<div class="btn-wrapper">
+									<button @click="ageValidation()" class="btn-circle btn-circle-white">
+										No
+									</button>
+									<button @click="step(2)" class="btn-circle btn-whtie">
+										Yes
+									</button>
+								</div>
+							</div>
+
+						</article>
+
+						<article v-if="currentStep === 2" class="step step-2" style="background-image: url(images/img4.jpeg);">
+							<div class="step-header">
+								<h1>1: Type </h1>
+							</div>
+							<div class="step-body">
+								<h2>What kind of body type attracts you?</h2>
+								<p>(Please select up to 3 answers)</p>
+
+								<div class="checkbox-wrapper">
+									<div class="checkbox-list">
+										<div class="checkbox">
+											<input type="checkbox" id="type1">
+											<label for="type1" style="background-image: url(images/img4.jpeg);">
+												<span>
+													Thin
+												</span>
+											</label>
+										</div>
+										<div class="checkbox">
+											<input type="checkbox" id="type2">
+											<label for="type2" style="background-image: url(images/img4.jpeg);">
+												<span>
+													Athletic
+												</span>
+											</label>
+										</div>
+										<div class="checkbox">
+											<input type="checkbox" id="type3">
+											<label for="type3" style="background-image: url(images/img4.jpeg);">
+												<span>
+													Big boobs
+												</span>
+											</label>
+										</div>
+										<div class="checkbox">
+											<input type="checkbox" id="type4">
+											<label for="type4" style="background-image: url(images/img4.jpeg);">
+												<span>
+													Big booties
+												</span>
+											</label>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="step-footer">
+								<div class="btn-wrapper">
+									<button @click="step(1)" class="btn-circle btn-circle-white">
+										Back
+									</button>
+									<button @click="step(3)" class="btn-circle btn-whtie">
+										Next
+									</button>
+								</div>
+							</div>
+						</article>
+						<article v-if="currentStep === 3" class="step step-3" style="background-image: url(images/img4.jpeg);">
+							<div class="step-header">
+								<h1>2: Preferred ages</h1>
+							</div>
+							<div class="step-body">
+								<h2>Which age range is right for you?</h2>
+								<p>(Please select up to 3 answers)</p>
+
+								<div class="checkbox-wrapper">
+									<div class="checkbox-list">
+										<div class="checkbox">
+											<input type="checkbox" id="ages1">
+											<label for="ages1" style="background-image: url(images/img4.jpeg);">
+												<span>
+													18 - 25
+												</span>
+											</label>
+										</div>
+										<div class="checkbox">
+											<input type="checkbox" id="ages2">
+											<label for="ages2" style="background-image: url(images/img4.jpeg);">
+												<span>
+													25 - 35
+												</span>
+											</label>
+										</div>
+										<div class="checkbox">
+											<input type="checkbox" id="ages3">
+											<label for="ages3" style="background-image: url(images/img4.jpeg);">
+												<span>
+													35 - 45
+												</span>
+											</label>
+										</div>
+										<div class="checkbox">
+											<input type="checkbox" id="ages4">
+											<label for="ages4" style="background-image: url(images/img4.jpeg);">
+												<span>
+													45 +
+												</span>
+											</label>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="step-footer">
+								<div class="btn-wrapper">
+									<button @click="step(2)" class="btn-circle btn-circle-white">
+										Back
+									</button>
+									<button @click="step(4)" class="btn-circle btn-whtie">
+										Next
+									</button>
+								</div>
+							</div>
+						</article>
+						<article v-if="currentStep === 4" class="step step-4" style="background-image: url(images/img4.jpeg);">
+							<div class="step-header">
+								<h1>3: Type of relationship</h1>
+							</div>
+							<div class="step-body">
+								<h2>What kind of relationship are you looking for?</h2>
+								<p>(Please select up to 3 answers)</p>
+
+								<div class="checkbox-wrapper">
+									<div class="checkbox-list">
+										<div class="checkbox">
+											<input type="checkbox" id="type-relationship1">
+											<label for="type-relationship1" style="background-image: url(images/img4.jpeg);">
+												<span>
+													One night <br> stand
+												</span>
+											</label>
+										</div>
+										<div class="checkbox">
+											<input type="checkbox" id="type-relationship2">
+											<label for="type-relationship2" style="background-image: url(images/img4.jpeg);">
+												<span>
+													Regular casual <br> sex
+												</span>
+											</label>
+										</div>
+										<div class="checkbox">
+											<input type="checkbox" id="type-relationship3">
+											<label for="type-relationship3" style="background-image: url(images/img4.jpeg);">
+												<span>
+													Multi-sex
+												</span>
+											</label>
+										</div>
+										<div class="checkbox">
+											<input type="checkbox" id="type-relationship4">
+											<label for="type-relationship4" style="background-image: url(images/img4.jpeg);">
+												<span>
+													Romantic <br> date
+												</span>
+											</label>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="step-footer">
+								<div class="btn-wrapper">
+									<button @click="step(3)" class="btn-circle btn-circle-white">
+										Back
+									</button>
+									<button @click="step(5)" class="btn-circle btn-whtie">
+										Next
+									</button>
+								</div>
+							</div>
+						</article>
+						<article v-if="currentStep === 5" class="step step-5" style="background-image: url(images/img4.jpeg);">
+							<div class="step-header">
+								<h1>4: Location</h1>
+							</div>
+							<div class="step-body">
+								<h2>Distance between you and your partner</h2>
+								<p>(Please select up to 3 answers)</p>
+
+								<div class="checkbox-wrapper">
+									<div class="checkbox-list">
+										<div class="checkbox">
+											<input type="checkbox" id="location1">
+											<label for="location1" style="background-image: url(images/img4.jpeg);">
+												<span>
+													In my city
+												</span>
+											</label>
+										</div>
+										<div class="checkbox">
+											<input type="checkbox" id="location2">
+											<label for="location2" style="background-image: url(images/img4.jpeg);">
+												<span>
+													Same area
+												</span>
+											</label>
+										</div>
+										<div class="checkbox">
+											<input type="checkbox" id="location3">
+											<label for="location3" style="background-image: url(images/img4.jpeg);">
+												<span>
+													Same state
+												</span>
+											</label>
+										</div>
+										<div class="checkbox">
+											<input type="checkbox" id="location4">
+											<label for="location4" style="background-image: url(images/img4.jpeg);">
+												<span>
+													Whole <br> country
+												</span>
+											</label>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="step-footer">
+								<div class="btn-wrapper">
+									<button @click="step(4)" class="btn-circle btn-circle-white">
+										Back
+									</button>
+									<button @click="step(6)" class="btn-circle btn-whtie">
+										Next
+									</button>
+								</div>
+							</div>
+						</article>
+						<article v-if="currentStep === 6" class="step step-6" style="background-image: url(images/img4.jpeg);">
+							<div class="step-header">
+								<h1>You can now sign up!</h1>
+							</div>
+							<div class="step-body">
+
+								<ul>
+									<li>
+										<span></span>
+										You can now sign up for free 
+									</li>
+									<li>
+										<span></span>
+										Over 200 women match your criteria 
+									</li>
+									<li>
+										<span></span>
+										There are still 6 places available for today* 
+									</li>
+								</ul>
+								<h2 class="clr-gold"><strong>Reminder</strong></h2>
+								<p>You may recognize women from your community, neighbors, etc. In this case, please remain discreet and do not disclose their naked or compromising photos. </p>
+							</div>
+							<div class="step-footer">
+								<div class="btn-wrapper">
+									<button @click="step(5)" class="btn-circle btn-circle-white">
+										Back
+									</button>
+									<button class="btn-circle btn-whtie">
+										Next
+									</button>
+								</div>
+							</div>
+						</article>
+					</transition>
+				</section>
+			</div>
+
+			<footer class="footer-main">
+				<p class="u-text-center">&copy;2023 SUGAR DADDY - MAIATSACO LIMITED
+					All Intellectual Property Rights Reserved </p>
+				<p class="u-text-center">This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy" class="clr-gold">Privacy Policy</a>
+					and <a href="https://policies.google.com/terms" class="clr-gold">Terms of Service</a>
+					apply. </p>
+			</footer>
+		</main>
+
+		<script src="app.js"></script>
+
+	</body>
+
+</html>
